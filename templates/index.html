@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    header {
+        border: 2px solid black;
+        background-color: rgb(17, 104, 75);
+        color: white;
+        padding: 6vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    form input {
+        display: block;
+        padding: 12px;
+        margin: 19px;
+        margin-top: 3px;
+        border: 2px solid;
+        width: 200px;
+
+    }
+
+    form label {
+        display: block;
+        margin-left: 20px;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .container {
+        border: 2px solid black;
+        display: inline-flex;
+        background-color: rgb(255, 255, 255);
+        margin-left: 40%;
+        margin-top: 6%;
+        width: 265px;
+        height: 282px;
+        border-radius: 10px;
+        box-shadow: 5px 15px 39px 1px #888888
+    }
+
+    input[type="submit"] {
+        background-color: rgb(255, 255, 255);
+        width: 100px;
+        padding: 12px;
+        margin: auto;
+        border-radius: 22px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover {
+        color: white;
+        background-color:rgb(17, 104, 75) ;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Key Transportation Cipher</h1>
+    </header>
+    <main>
+        <div class="container">
+            <form action="/encrypt" method="POST">
+                <label for="plain">Plain text</label>
+                <input type="text" name="plain" id="plain" placeholder="Enter the plain text" required>
+                <label for="key">Key</label>
+                <input type="text" name="key" id="key" placeholder="Enter the key " required>
+                <input type="submit" value="Encrypt">
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

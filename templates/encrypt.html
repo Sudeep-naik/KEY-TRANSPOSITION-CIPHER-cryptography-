@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Final Report</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    header {
+        border: 2px solid black;
+        background-color: rgb(17, 104, 75);
+        color: white;
+        padding: 6vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .container {
+        border: 2px solid black;
+       
+        width: 600px;
+        height: 246px;
+        margin-left: 30%;
+        margin-top: 4%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        box-shadow: 5px 15px 39px 1px #888888
+    }
+
+    .container h1 {
+        color: white;
+        margin: 0px;
+        padding: 0px;
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color:rgb(44, 140, 108) ;
+        
+    }
+
+    input[type="submit"] {
+        background-color: white;
+        background-color: rgb(255, 255, 255);
+        width: 100px;
+        padding: 13px;
+        margin-left: 240px;
+        border-radius: 22px;
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 80px;
+    }
+
+    input[type="submit"]:hover {
+        color: white;
+        background-color: rgb(17, 104, 75);
+    }
+
+    .container h2{
+        padding: 2px;
+        padding-left: 20px;
+        margin-top: 28px;
+        word-spacing: -4px;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Key Transportation Cipher</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h1>The Encrypted Plain-Text is.....</h1>
+            <h2>
+
+                {% for row in result %}
+                {% for char in row %}
+
+                {{ char }}
+
+                {% endfor %}
+                {% endfor %}
+
+            </h2>
+            <form action="/decrypt" method="post">
+                <label for="ciphertext">
+
+                </label>
+                <input type="submit" value="decrypt">
+            </form>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
