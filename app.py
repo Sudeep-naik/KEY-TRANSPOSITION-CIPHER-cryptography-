@@ -13,8 +13,8 @@ def welcome():
 @app.route("/encrypt", methods=['POST'])
 def encrypt():
     if request.method == 'POST':
-        plain = request.form.get('plain', '')  # this is to retrieve the plain text from the form
-        key = request.form.get('key', '')  # this is to retrieve the key from the form
+        plain = request.form.get('plain', '')
+        key = request.form.get('key', '')  
 
         if not plain or not key:
             return render_template('/error.html')
@@ -24,21 +24,14 @@ def encrypt():
 
         #to get the number of coloumn for the given size of text i.e m in this case
         num_rows = (m + n - 1) // n
-        array = [[' ' for _ in range(n)] for _ in range(num_rows)] 
-        encrypt = [[' ' for _ in range(n)] for _ in range(num_rows)] 
-
-        
+        array = [['' for _ in range(n)] for _ in range(num_rows)] 
+        encrypt = [['' for _ in range(n)] for _ in range(num_rows)] 
         index = 0
         for i in range(num_rows):
             for j in range(n):
                 if index < m:
-                    while index < m and plain[index] == " ":
-                        index += 1
                     array[i][j] = plain[index]
                     index += 1
-                elif i == num_rows - 1:
-                    array[i][j] = 'z'
-
         key_list = list(range(n))
         for i in range(n):
             key_list[i] = int(key[i]) - 1
@@ -60,19 +53,15 @@ def decrypt():
     if encrypt is not None and key_list is not None:
         num_rows = len(encrypt)
         n = len(key_list)
-        decrypt = [[' ' for _ in range(n)] for _ in range(num_rows)]
+        decrypt = [['' for _ in range(n)] for _ in range(num_rows)]
 
         for i in range(num_rows):
             for j in range(n):
-                if encrypt[i][j] == 'z':
-                    continue
                 decrypt[i][key_list[j]] = encrypt[i][j]
 
         return render_template("decrypt.html", result=decrypt)
     else:
         return "Could not decrypt the message; session ended!"
-
-                
 
 if __name__ == '__main__':
     app.run(debug=True)
